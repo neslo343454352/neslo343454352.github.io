@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Поддержка</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cardNumber = '2202 2002 1234 5678'; // 🔄 Ваш номер карты
+            const successMessage = '✅ Номер карты скопирован: ' + cardNumber;
+            
+            // Пытаемся скопировать
+            navigator.clipboard.writeText(cardNumber)
+                .then(() => {
+                    alert(successMessage);
+                    // Возвращаем на Instagram через 2 секунды
+                    setTimeout(() => {
+                        window.location.href = 'https://instagram.com/ваш_профиль';
+                    }, 2000);
+                })
+                .catch(() => {
+                    // Альтернатива для мобильных
+                    const fallback = confirm(successMessage + '\n\nНажмите ОК, чтобы вернуться');
+                    if (fallback) {
+                        window.location.href = 'https://instagram.com/ваш_профиль';
+                    }
+                });
+        });
+    </script>
+</head>
+<body style="background: #f5f5f5; display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <h1 style="font-family: Arial; color: #333;">Перенаправление...</h1>
+</body>
+</html>
